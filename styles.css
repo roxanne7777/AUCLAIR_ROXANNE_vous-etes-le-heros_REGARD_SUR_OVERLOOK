@@ -1,0 +1,59 @@
+body {
+    background-color: #452103;
+    height: 100vh;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+@font-face {
+    font-family: "Special Elite";
+    src: url("/assets/Special_Elite/SpecialElite-Regular.ttf") format("truetype");
+}
+
+#jeu {
+    width: 800px;
+    height: 800px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 0 auto;
+    background-color: #690500;
+    font-family: Helvetica, Arial, sans-serif;
+    color: #FBF2C0;
+    text-align: justify;
+    padding: 15px;
+    position:absolute;
+}
+
+h1 {
+    font-family: 'Special Elite';
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
+
+#options {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-self: flex-end;
+}
+
+#options button {
+    padding: 10px 20px;
+    background-color: #DC7F2E;
+    color: #000000;
+    border: none;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+#options button:hover {
+    background-color: #FBF2C0;
+    color: #452103;
+}

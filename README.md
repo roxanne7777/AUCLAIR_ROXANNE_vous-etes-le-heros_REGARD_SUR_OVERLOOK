@@ -14,3 +14,4 @@
 
 ## Diagramme 
 
+![diagramme](./assets/schema2.png)
