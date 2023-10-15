@@ -1,5 +1,7 @@
 body {
     background-color: #452103;
+    background-image: url("../images/Carpet-Pattern-from-the-Shining.svg");
+    background-blend-mode: multiply;
     min-height: 100vh;
     display: flex;
     justify-content: center;
@@ -20,16 +22,17 @@ body {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    background-color: #690500;
+    background-color:  #690500;
     font-family: Helvetica, Arial, sans-serif;
     color: #FBF2C0;
     text-align: justify;
-    padding: 15px;
+    padding: 25px;
 }
 
 h1 {
     font-family: 'Special Elite';
-    margin-bottom: 0;
+    margin-top: 5px;
+    font-size: 3rem;
 }
 
 h3 {
@@ -39,26 +42,26 @@ h3 {
 img {
     width: auto;
     height: 55%;
-}
-
-p {
-    margin-top: 0;
+    box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.5);
 }
 
 #options {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     width: 100%;
     align-self: flex-end;
+    margin-top: 10px;
 }
 
 #options button {
     padding: 10px 20px;
     background-color: #DC7F2E;
     color: #000000;
+    font-weight: bold;
     border: none;
     margin-top: 15px;
     margin-bottom: 15px;
+    transition-duration: 0.33s;
 }
 
 #options button:hover {
