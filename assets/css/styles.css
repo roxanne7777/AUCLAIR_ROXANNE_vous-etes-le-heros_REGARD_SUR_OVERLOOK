@@ -22,7 +22,11 @@ body {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    background-color:  #690500;
+    background-color: #690500;
+    background-image: url("../images/papier.svg");
+    background-position: center bottom;
+    background-size: cover;
+    background-blend-mode: hard-light;
     font-family: Helvetica, Arial, sans-serif;
     color: #FBF2C0;
     text-align: justify;
@@ -43,6 +47,7 @@ img {
     width: auto;
     height: 55%;
     box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
 }
 
 #options {

@@ -145,7 +145,9 @@ function goToChapter(cle) {
             const nouveauBtn = document.createElement('button');
             nouveauBtn.textContent = chapitre.boutons[i].titre;
             nouveauBtn.addEventListener('click', () => {
-                goToChapter(chapitre.boutons[i].destination)
+                setTimeout (function() {
+                    goToChapter(chapitre.boutons[i].destination)
+                    }, 300);
             });
 
             boutons.appendChild(nouveauBtn);
