@@ -14,4 +14,4 @@
 
 ## Diagramme 
 
-![diagramme](./assets/schema2.png)
+![diagramme](./assets/drawio/schema2.png)

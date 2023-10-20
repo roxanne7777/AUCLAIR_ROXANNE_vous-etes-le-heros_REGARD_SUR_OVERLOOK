@@ -54,7 +54,7 @@ let chapters = {
     },
     bain: {
         titre: "Chambre 237",
-        description: "",
+        description: "Vous foncez tout droit vers une chambre dont la porte est ouverte, vous y entrez et refermez derrière vous. Une atmosphère lourde vous enveloppe et vos jambes vous mènent vers la salle de bain sans que vous ne le décidiez. Un instinct vous pousse à regarder dans la baignoire, où se trouve quelques centimètres d'eau sale. Vous apercevez le reflet d'une vieille femme horrifiante... puis des mains sortent de l'eau! Vous quittez la chambre à toute vitesse.",
         image: "assets/images/bain.webp",
         boutons: [
             { titre: "Continuer son chemin", destination: "porte" }
@@ -62,7 +62,7 @@ let chapters = {
     },
     redrum: {
         titre: "REDRUM",
-        description: "",
+        description: "Après votre virage, vous décidez d'entrer dans une chambre pour vous cacher, car vous êtes trop essouflé pour continuer de courir. Vous regardez autour et vous constatez qu'il est écrit REDRUM en rouge partout sur les murs. Abasourdi, vous restez figé alors qu'une ombre indescriptible s'approche de vous lentement, et vous tranche la gorge sans que vous ne puissiez poser un seul geste.",
         image: "assets/images/redrum.jpg",
         boutons: [
             { titre: "Réessayer", destination: "debut" }
@@ -133,21 +133,21 @@ function goToChapter(cle) {
         if (chapitre === "maquette") {
             twist = true;
         }
-        
+
         while (boutons.firstChild) {
             boutons.removeChild(boutons.firstChild);
         }
 
         for (let i = 0; i < chapitre.boutons.length; i++) {
-            if (chapitre === "labyrinthe" && twist && i == 1) { 
-                continue;           
+            if (chapitre === "labyrinthe" && twist && i == 1) {
+                continue;
             }
             const nouveauBtn = document.createElement('button');
             nouveauBtn.textContent = chapitre.boutons[i].titre;
             nouveauBtn.addEventListener('click', () => {
-                setTimeout (function() {
+                setTimeout(function () {
                     goToChapter(chapitre.boutons[i].destination)
-                    }, 300);
+                }, 300);
             });
 
             boutons.appendChild(nouveauBtn);
