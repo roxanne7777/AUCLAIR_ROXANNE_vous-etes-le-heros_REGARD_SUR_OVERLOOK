@@ -54,7 +54,6 @@ img {
     display: flex;
     justify-content: space-around;
     width: 100%;
-    align-self: flex-end;
     margin-top: 10px;
 }
 

@@ -120,7 +120,7 @@ let chapters = {
     }
 };
 
-let twist = false;
+let twist = 0;
 
 function goToChapter(cle) {
     const chapitre = chapters[cle];
@@ -130,8 +130,12 @@ function goToChapter(cle) {
     document.getElementById("image").src = chapitre.image;
 
     if (chapitre) {
-        if (chapitre === "maquette") {
-            twist = true;
+        if (cle === "maquette") {
+            twist = 1;
+        }
+
+        if (cle === "bain") {
+            twist = 2;
         }
 
         while (boutons.firstChild) {
@@ -139,7 +143,10 @@ function goToChapter(cle) {
         }
 
         for (let i = 0; i < chapitre.boutons.length; i++) {
-            if (chapitre === "labyrinthe" && twist && i == 1) {
+            if (cle === "labyrinthe" && twist == 1 && i == 1) {
+                continue;
+            }
+            if (cle === "labyrinthe" && twist == 2 && i == 0) {
                 continue;
             }
             const nouveauBtn = document.createElement('button');
