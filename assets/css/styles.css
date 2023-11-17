@@ -92,6 +92,11 @@ img {
     box-shadow: 7px 7px 15px rgba(0, 0, 0, 0.5);
 }
 
+#options button:focus {
+    background-color: #4d0400;
+    color: #FBF2C0;
+}
+
 .reset {
     padding: 10px 20px;
     background-color: #4d0400;
