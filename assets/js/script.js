@@ -13,6 +13,7 @@ let chapters = {
         titre: "Tricycle hanté",
         description: "Vous avez échappé au bruit, mais pas à la frayeur. Votre course vous a mené devant l'ascenceur principal. Vous trouvez étrange de voir, devant les portes closes, un tricycle qui semble avoir été abandonné. Vous fixez l'objet insolite un instant, puis lorsque vous vous apprêtez à bouger, celui-ci se met à rouler tout seul. Il se dirige vers l'ascenceur dont les portes s'ouvrent à son approche. Paralysé, vous restez immobile, les yeux ronds, alors qu'une gigantesque vague de sang provenant de l'intérieur de l'ascenceur déferle vers vous, vous noyant dans la peur.",
         image: "assets/images/tricycle.webp",
+        video: "assets/videos/sang.mp4",
         boutons: [
             { titre: "Réessayer", destination: "debut" }
         ]
@@ -89,6 +90,7 @@ let chapters = {
         titre: "Banc de neige",
         description: "Soulagé, vous vous précipitez pour ouvrir la porte, mais elle semble coincée. Vous avez beau pousser de toutes vos forces, elle bouge d'à peine quelques centimètres. Vous constatez qu'un énorme banc de neige obstrue la porte de l'extérieur, et qu'il faudrait une pelle mécanique pour la dégager. Vous avez à peine le temps de vous retourner pour réfléchir à un plan b, que l'ensemble des esprits malveillants d'Overlook vous entourent et vous torturent jusqu'à ce que mort s'ensuive.",
         image: "assets/images/neige.webp",
+        video: "assets/videos/esprits.mp4",
         boutons: [
             { titre: "Réessayer", destination: "debut" }
         ]
@@ -97,6 +99,7 @@ let chapters = {
         titre: "Le labyrinthe",
         description: "Vous sortez dans la tempête de neige. Vous entrez dans le labyrinthe de haies pour échapper à l'esprit. Avez-vous pu observer la maquette du labyrinthe?",
         image: "assets/images/labyrinthe.jpg",
+        video: "assets/videos/tempete.mp4",
         boutons: [
             { titre: "Oui", destination: "fin" },
             { titre: "Non", destination: "gel" }
@@ -122,20 +125,46 @@ let chapters = {
 
 let twist = 0;
 
+const chapitreEnCours = localStorage.getItem('chapitreEnCours');
+const twistActivee = localStorage.getItem('twistActivee');
+const son = document.getElementById("son");
+
+goToChapter(chapitreEnCours);
+
 function goToChapter(cle) {
     const chapitre = chapters[cle];
     const boutons = document.querySelector('.boutons');
     document.getElementById("titre").innerHTML = chapitre.titre;
     document.getElementById("description").innerHTML = chapitre.description;
-    document.getElementById("image").src = chapitre.image;
+
+    localStorage.setItem('chapitreEnCours', cle);
 
     if (chapitre) {
         if (cle === "maquette") {
             twist = 1;
+
+            localStorage.setItem('twistActivee', twist);
         }
 
         if (cle === "bain") {
             twist = 2;
+
+            localStorage.setItem('twistActivee', twist);
+        }
+
+        if (chapitre.video) {
+            const videoElement = document.createElement('video');
+            videoElement.src = chapitre.video;
+            videoElement.autoplay = true;
+            videoElement.loop = true;
+            videoElement.muted = true;
+            document.getElementById("media").innerHTML = '';
+            document.getElementById("media").appendChild(videoElement);
+        } else {
+            const imageElement = document.createElement('img');
+            imageElement.src = chapitre.image;
+            document.getElementById("media").innerHTML = '';
+            document.getElementById("media").appendChild(imageElement);
         }
 
         while (boutons.firstChild) {
@@ -152,6 +181,9 @@ function goToChapter(cle) {
             const nouveauBtn = document.createElement('button');
             nouveauBtn.textContent = chapitre.boutons[i].titre;
             nouveauBtn.addEventListener('click', () => {
+                son.pause();
+                son.currentTime = 0;
+                son.play();
                 setTimeout(function () {
                     goToChapter(chapitre.boutons[i].destination)
                 }, 300);
@@ -165,5 +197,16 @@ function goToChapter(cle) {
     }
 }
 
-goToChapter("debut");
+const reset = document.querySelector('.reset');
+
+reset.addEventListener('click', () => {
+    localStorage.clear();
+    son.pause();
+    son.currentTime = 0;
+    son.play();
+    setTimeout(function () {
+        goToChapter('debut');
+    }, 300);
+});
+
 
