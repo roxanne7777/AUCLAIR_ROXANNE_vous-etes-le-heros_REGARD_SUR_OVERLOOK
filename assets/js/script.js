@@ -1,3 +1,11 @@
+let twist;
+
+if (localStorage.getItem('twistActivee')) {
+    twist = parseInt(localStorage.getItem('twistActivee'));
+} else {
+    twist = 0;
+}
+
 let chapters = {
     debut: {
         titre: "Il faut partir",
@@ -123,32 +131,31 @@ let chapters = {
     }
 };
 
-let twist = 0;
-
-const chapitreEnCours = localStorage.getItem('chapitreEnCours');
+const chapitreEnCours = localStorage.getItem('chapitreEnCours') || 'debut';
 const twistActivee = localStorage.getItem('twistActivee');
 const son = document.getElementById("son");
+const trameSonore = document.getElementById('trame');
+const caseMute = document.getElementById('caseMute');
 
 goToChapter(chapitreEnCours);
 
 function goToChapter(cle) {
+    trameSonore.play();
     const chapitre = chapters[cle];
     const boutons = document.querySelector('.boutons');
     document.getElementById("titre").innerHTML = chapitre.titre;
     document.getElementById("description").innerHTML = chapitre.description;
-
+    
     localStorage.setItem('chapitreEnCours', cle);
 
     if (chapitre) {
         if (cle === "maquette") {
             twist = 1;
-
             localStorage.setItem('twistActivee', twist);
         }
 
         if (cle === "bain") {
             twist = 2;
-
             localStorage.setItem('twistActivee', twist);
         }
 
