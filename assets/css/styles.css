@@ -2,6 +2,7 @@ body {
     background-color: #452103;
     background-image: url("../images/Carpet-Pattern-from-the-Shining.svg");
     background-blend-mode: multiply;
+    background-position: center bottom;
     min-height: 100vh;
     display: flex;
     justify-content: center;
@@ -97,6 +98,28 @@ img {
     color: #FBF2C0;
 }
 
+#caseMute {
+    margin-right: 10px;
+}
+
+#caseMute:checked::after {
+    content: '\2713'; 
+    display: inline-block;
+    color: #4d0400; 
+    font-size: 1.2rem;
+    margin-right: 5px; 
+}
+
+#caseMute::after {
+    content: '';
+    display: inline-block;
+    background-color: #FBF2C0; 
+    width: 20px;
+    height: 20px;
+    border-radius: 3px;
+    line-height: 20px;
+}
+
 .reset {
     padding: 10px 20px;
     background-color: #4d0400;
@@ -114,4 +137,48 @@ img {
     color: #DC7F2E;
     transform: translate(-2%, -5%);
     box-shadow: 7px 7px 15px rgba(0, 0, 0, 0.5);
+}
+
+/*tablettes*/
+@media (max-width: 768px) {
+    #jeu {
+        width: 85%;
+        height: auto;
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    #media {
+        height: 40%;
+    }
+
+    #options {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #options button,
+    .reset {
+        width: 100%;
+    }
+}
+
+/*cellulaire*/
+@media (max-width: 480px) {
+    #jeu {
+        width: 100%;
+        padding: 10px;
+        font-size: 0.8rem;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    #media {
+        height: 30%;
+    }
 }

@@ -1,9 +1,32 @@
 let twist;
-
 if (localStorage.getItem('twistActivee')) {
     twist = parseInt(localStorage.getItem('twistActivee'));
 } else {
     twist = 0;
+}
+
+const son = document.getElementById("son");
+const trameSonore = document.getElementById('trame');
+const caseMute = document.getElementById('caseMute');
+
+function activerSilence() {
+    if (caseMute.checked) {
+        son.muted = true;
+        trameSonore.muted = true;
+        localStorage.setItem('silenceActif', true);
+    } else {
+        son.muted = false;
+        trameSonore.muted = false;
+        localStorage.setItem('silenceActif', false);
+    }
+}
+
+caseMute.addEventListener('change', activerSilence);
+
+const silenceActif = localStorage.getItem('silenceActif');
+if (silenceActif === 'true') {
+    caseMute.checked = true;
+    activerSilence();
 }
 
 let chapters = {
@@ -133,9 +156,6 @@ let chapters = {
 
 const chapitreEnCours = localStorage.getItem('chapitreEnCours') || 'debut';
 const twistActivee = localStorage.getItem('twistActivee');
-const son = document.getElementById("son");
-const trameSonore = document.getElementById('trame');
-const caseMute = document.getElementById('caseMute');
 
 goToChapter(chapitreEnCours);
 
