@@ -2,6 +2,7 @@ body {
     background-color: #452103;
     background-image: url("../images/Carpet-Pattern-from-the-Shining.svg");
     background-blend-mode: multiply;
+    background-size: contain;
     min-height: 100vh;
     display: flex;
     justify-content: center;
